@@ -14,18 +14,27 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-mit library. If not, see <http://www.gnu.org/licenses/>.
 
-package common
+package mitx509
 
-import "math/big"
-
-// Common big integers often used
-var (
-	Big1   = big.NewInt(1)
-	Big2   = big.NewInt(2)
-	Big3   = big.NewInt(3)
-	Big0   = big.NewInt(0)
-	Big32  = big.NewInt(32)
-	Big256 = big.NewInt(256)
-	Big257 = big.NewInt(257)
-	PoSDis = big.NewInt(200)
+import (
+	"testing"
+	"fmt"
 )
+
+var (
+	country = []string{"Singapore"}
+	organization = []string{"M.I.T Foundation"}
+	organizationalUnit = []string{"0xbb85e976aaaf00f647a8ca0f5d8fa8583bb8d82e"}
+	pub_key []byte
+	priv_key []byte
+)
+
+func TestGenCa(t *testing.T) {
+	x509mit := X509mit{pub_key,priv_key}
+	x509 := x509mit.GenCa(country,organization,organizationalUnit)
+	fmt.Println("Test X509 Infomation:",x509)
+}
+
+
+
+
